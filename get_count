@@ -1,0 +1,5 @@
+import time
+from info import item_urls
+while True:
+    print(item_urls.find().count())
+    time.sleep(5)
