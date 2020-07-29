@@ -1,0 +1,15 @@
+import requests
+from bs4 import BeautifulSoup
+start_url='https://sz.58.com/sale.shtml'
+url_host='https://sz.58.com/'
+headers={
+
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36'
+
+}
+def get_url(url):
+    r=requests.get(url,headers=headers)
+    soup=BeautifulSoup(r.text,'lxml')
+    urls=soup.select('ul.ym-submnu > li > b > a')
+    for url in urls:
+        page_url=url_host+url.get('href')
